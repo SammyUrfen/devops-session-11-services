@@ -1,0 +1,14 @@
+# MetalLB v0.9 (minikube addon) reads this ConfigMap. The range sits inside
+# the minikube docker network (node IP 192.168.76.2), so the host can reach it.
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: config
+  namespace: metallb-system
+data:
+  config: |
+    address-pools:
+    - name: default
+      protocol: layer2
+      addresses:
+      - 192.168.76.200-192.168.76.210
